@@ -1,0 +1,6 @@
+ada 3 bagian.
+
+hashing, payload, signature.
+masing masing dari tiga itu di hash.
+
+lalu nanti buat buka hash tersebut kita pegang secret key nya.

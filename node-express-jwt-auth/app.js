@@ -25,20 +25,20 @@ app.get('/', (req, res) => res.render('home'));
 app.get('/smoothies', (req, res) => res.render('smoothies'));
 app.use(authRoutes);
 
-app.get('/set-cookies', (req, res) => {
-  // res.setHeader('Set-cookie', 'newUser=true');
+// app.get('/set-cookies', (req, res) => {
+//   // res.setHeader('Set-cookie', 'newUser=true');
 
-  res.cookie('newUser', false);
-  res.cookie('isEmployee', true, { maxAge: 1000 * 60 * 60 * 24, httpOnly: true })
+//   res.cookie('newUser', false);
+//   res.cookie('isEmployee', true, { maxAge: 1000 * 60 * 60 * 24, httpOnly: true })
 
-  res.send('you got the cookie');
-});
+//   res.send('you got the cookie');
+// });
 
-app.get('/read-cookies', (req, res) => {
-  // si cookie bisa diakses karena kita pake cookieParser coyyy...
-  // kirain teh pedah siga akses kana inspect console kitu 
-  const cookies = req.cookies;
-  console.log(cookies);
+// app.get('/read-cookies', (req, res) => {
+//   // si cookie bisa diakses karena kita pake cookieParser coyyy...
+//   // kirain teh pedah siga akses kana inspect console kitu 
+//   const cookies = req.cookies;
+//   console.log(cookies);
 
-  res.send(cookies);
-});
+//   res.send(cookies);
+// });

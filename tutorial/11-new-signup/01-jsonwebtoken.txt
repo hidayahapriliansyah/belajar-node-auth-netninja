@@ -1,0 +1,15 @@
+npm install jsonwebtoken
+
+buat bikinnya bisa gini :
+
+    const createToken = (id) => {
+      return jwt.sign({ id }, 'net ninja hash', {
+        expiresIn: maxAge,
+      });
+    };
+
+itu buat nyimpen tokennya di server.
+lalu simpen deh tokeenya di browser :
+
+        const token = createToken(user._id);
+        res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
