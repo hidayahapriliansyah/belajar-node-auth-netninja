@@ -1,0 +1,3 @@
+npm install bcrypt 
+
+bcrypt itu asynchronous ya ... jadi make nya harus pake await
