@@ -16,6 +16,23 @@ const userSchema = new mongoose.Schema({
   },
 });
 
+// fire something after save to db. jalan
+userSchema.post('save', function (doc, next) {
+  console.log('User saved', doc);
+  next();
+});
+
+// fire function excatly before about to save to db.
+// fungsi ini akan kita manfaatkan untuk hashing password sebelum save ke db
+// pre ini gak punya akses ke doc, yang mana doc adalah hasil data yang udah ke save
+// tapi kita bisa ngakses this yang mana ini merupakan hasil User.create()
+// sementara sebelum di save. 
+
+userSchema.pre('save', function (next) {
+  console.log('before save', this);
+  next();
+});
+
 const User = mongoose.model('user', userSchema);
 
 module.exports = User;

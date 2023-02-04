@@ -1,0 +1,5 @@
+kita menggunakan mongoose hooks kayak post, pre gitu. ini jadi kayak event emitter
+yang jalan ketika ada event nyala.
+
+ok lewat.
+
