@@ -1,0 +1,67 @@
+Mengubah objek dari err.errors yang asalnya begini :
+    {
+        "email": {
+            "properties": {
+                "message": "Please enter an email",
+                "type": "required",
+                "path": "email"
+            },
+            "kind": "required",
+            "path": "email"
+        },
+        "password": {
+            "properties": {
+                "message": "Please enter password",
+                "type": "required",
+                "path": "password"
+            },
+            "kind": "required",
+            "path": "password"
+        }
+    }
+
+kalau pakai Object.values(err.errors) jadi begini :
+  [
+      {
+          "properties": {
+              "message": "Please enter valid email",
+              "type": "user defined",
+              "path": "email",
+              "value": "this"
+          },
+          "kind": "user defined",
+          "path": "email",
+          "value": "this"
+      },
+      {
+          "properties": {
+              "message": "Password min length is 6",
+              "type": "minlength",
+              "minlength": 6,
+              "path": "password",
+              "value": "test"
+          },
+          "kind": "minlength",
+          "path": "password",
+          "value": "test"
+      }
+  ]
+
+berarti siganan kieu nya ...
+si object tingkat pertama jadi array. 
+terus si properties na nu mana eta eusina object
+ langsung dijadikeun value array, alias teu butuh deui keyna 
+ lansung objek na.
+
+Algoritman keren euy ...
+
+  if(err.message.includes('user validation failed')) {
+    Object.values(err.errors).forEach(({ properties }) => {
+      errors[properties.path] = properties.message;
+    });
+  }
+
+si object errornya di jadiin array dulu, karena isinya sama pasti 
+bisa diforeach dengan pengecekan yang sama. terus cek path nya, 
+ubah object errors key beradasarkan path, lalu valuenya berdasarkan message error tersebut ...
+gg...
