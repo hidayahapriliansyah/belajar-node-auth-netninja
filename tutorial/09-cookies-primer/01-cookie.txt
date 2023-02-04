@@ -1,0 +1,13 @@
+cara akses cookie lewat console browser
+
+  document.cookie
+
+cara set header cookie 
+  
+    res.setHeader('Set-cookie', 'newUser=true');
+
+di sini kita butuh package cookie-parser buat 
+bisa ngakses cookies dari req.
+
+    npm install cookie-parser
+
