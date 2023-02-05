@@ -10,6 +10,17 @@ const handleError = (err) => {
     return errors;
   }
 
+  // incorrect email
+  if (err.message === 'Incorrect email') {
+    errors.email = 'That email is not registerd';
+    return errors;
+  };
+  
+  if (err.message === 'Incorrect password') {
+    errors.password = 'Password is incorrect';
+    return errors;
+  };
+
   // validation error
   if(err.message.includes('user validation failed')) {
     Object.values(err.errors).forEach(({ properties }) => {
@@ -54,9 +65,12 @@ const login_post = async (req, res) => {
 
   try {
     const user = await User.login(email, password);
+    const token = createToken(user._id);
+    res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
     res.status(200).json({ user: user._id });
   } catch (err) {
-    res.status(400).json({});
+    const errors = handleError(err);
+    res.status(400).json({ errors });
   }
 };
 

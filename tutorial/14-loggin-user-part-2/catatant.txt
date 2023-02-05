@@ -1,0 +1,8 @@
+struktur kode err sign up sama login kenapa beda ya?
+jadi pas handle error na ge beda atuh.
+
+paingan ...
+sugan teh bakal langsung di consume. ternyata si eta teh objek,
+teu katingali struktur na hahahha ...
+
+login, handle error terus render token berhasil
