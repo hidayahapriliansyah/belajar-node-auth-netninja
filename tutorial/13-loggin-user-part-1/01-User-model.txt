@@ -1,0 +1,18 @@
+Kita bikin akan membuat static method User.login yang 
+mana nanti akan dipakai di authContoller di route login_post.
+
+Isi nya itu nge compare email sama password syang dimasukin 
+user.
+si password di comparenya pake bcrypt.
+
+userSchema.statics.login = async function(email, password) {
+  const user = await this.findOne({ email });
+  if (user) {
+    const auth = await bcrypt.compare(password, user.password);
+    if (auth) {
+      return user;
+    }
+    throw Error('Incorrect password');
+  }
+  throw Error('Invalid email');
+};
