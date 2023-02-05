@@ -1,0 +1,10 @@
+1.'cannot set headers after they are sent to the client' node js
+
+jawaban : https://stackoverflow.com/questions/7042340/error-cant-set-headers-after-they-are-sent-to-the-client
+
+
+ternyata pas dicek si auth nya gak pake else,
+yang mana jika si token ke cek di kan langusng redirect,
+nah karena gak pake else, redirect yang dibawahnya juga jalan. 
+jadi redirect 2 kali
+
