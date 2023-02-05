@@ -1,0 +1,6 @@
+bukan dihapus sih... tapi lebih tepat nya ditimpa.
+
+const logout_get = (req, res) => {
+  res.cookie('jwt', '', { maxAge: 1 });
+  res.redirect('/');
+};

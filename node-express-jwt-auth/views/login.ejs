@@ -9,7 +9,7 @@
   <label for="password">Password</label>
   <input type="password" name="password" required>
   <div class="password error"></div>
-  <button type="submit">Sign Up</button>
+  <button type="submit">Log in</button>
 </form>
 
 <script>
@@ -42,7 +42,7 @@
       }
 
       if (data.user) {
-        // location.assign('/');
+        location.assign('/');
       }
     } catch (err) {
       console.log(err);

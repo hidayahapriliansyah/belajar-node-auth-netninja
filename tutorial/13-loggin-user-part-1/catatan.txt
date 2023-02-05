@@ -1,0 +1,1 @@
+ngeredirect nya di front end nya ya ... location.assign('/');
