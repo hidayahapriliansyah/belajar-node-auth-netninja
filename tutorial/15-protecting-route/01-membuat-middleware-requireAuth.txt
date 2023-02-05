@@ -1,0 +1,31 @@
+kita bikin folder middleware/authMidleare.js, isinya :
+
+    const jwt = require('jsonwebtoken');
+
+    const requireAuth = (req, res, next) => {
+      // get cookies jwt
+      const token = req.cookies.jwt;
+
+      if (token) {
+        jwt.verify(token, 'net ninja hash', (err, decodedToken) => {
+          if (err) {
+            console.log(err.message);
+            res.redirect('/login');
+          } else {
+            console.log(decodedToken);
+            next();
+          }
+        });
+      }
+
+      res.redirect('/login');
+    };
+
+    module.exports = { requireAuth };
+
+terus nanti middle ware ini bisa kita pake pas di route kayak ...
+kita mau yang akses route smoothies itu udah login, nah di routnya kita pasang middleware requireAuth
+
+    app.get('/smoothies', requireAuth, (req, res) => res.render('smoothies'));    
+
+
